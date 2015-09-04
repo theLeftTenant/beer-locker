@@ -5,6 +5,7 @@ var passport = require('passport');
 var beerController = require('./controllers/beerController');
 var userController = require('./controllers/userController');
 var authController = require('./controllers/authController');
+var clientController = require('./controllers/clientController');
 
 //Connect to the BeerLocker MongoDB.
 mongoose.connect('mongodb://localhost:27017/BeerLocker');
@@ -33,6 +34,10 @@ router.route('/beers/:beer_id')
 router.route('/users')
 	.post(userController.postUsers)
 	.get(authController.isAuthenticated, userController.getUsers);
+
+router.route('/clients')
+	.post(authController.isAuthenticated, clientController.postClients)
+	.get(authController.isAuthenticated, clientController.getClients);
 
 //Register all routes with /api.
 app.use('/api', router);
