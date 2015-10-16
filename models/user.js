@@ -40,5 +40,5 @@ UserSchema.methods.verifyPassword = function(password, cb) {
 	});
 };
 
-//Export Mongoose model.
+// Export Mongoose model.
 module.exports = mongoose.model('User', UserSchema);

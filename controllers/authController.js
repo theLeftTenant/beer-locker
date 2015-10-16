@@ -62,7 +62,7 @@ passport.use(new BearerStrategy(
 	}
 ));
 
-exports.isAuthenticated = passport.authenticate('basic', { session: false });
+exports.isAuthenticated = passport.authenticate(['basic', 'bearer'], { session: false });
 exports.isClientAuthenticated = passport.authenticate('client-basic', { session: false });
 exports.isBearerAuthenticated = passport.authenticate('bearer', { session: false });
 // False session forces users/apps to submit username and password with each call.
