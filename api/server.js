@@ -34,8 +34,8 @@ router.route('/users')
 	.post(userController.postUsers)
 	.get(authController.isAuthenticated, userController.getUsers);
 
-/*router.route('/authenticate')
-	.post(authController.isAuthenticated);	//	This needs work*/	
+router.route('/authenticate')
+	.post(authController.isAuthenticated);	//	This needs work...	
 
 //	Register all routes with /api.
 app.use('/api', router);
