@@ -12,15 +12,15 @@ mongoose.connect('mongodb://localhost:27017/BeerLocker');
 var app = express();
 var router = express.Router();
 
-//Use body-parser.
+//	Use body-parser.
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
 
-//Use passport.
+//	Use passport.
 app.use(passport.initialize());
 
-//Create endpoint handlers.
+//	Create endpoint handlers.
 router.route('/beers')
 	.post(authController.isAuthenticated, beerController.postBeers)
 	.get(authController.isAuthenticated, beerController.getBeers);
@@ -34,9 +34,17 @@ router.route('/users')
 	.post(userController.postUsers)
 	.get(authController.isAuthenticated, userController.getUsers);
 
-//Register all routes with /api.
+/*router.route('/authenticate')
+	.post(authController.isAuthenticated);	//	This needs work*/	
+
+//	Register all routes with /api.
 app.use('/api', router);
 
-//Start server on port 3000.
+//	Add route for Angular frontend.
+app.get('*', function(req, res) {
+	res.sendFile('./public/index.html');
+});
+
+//	Start server on port 3000.
 app.listen(3000);
 console.log('BeerLocker listening on port 3000...');
