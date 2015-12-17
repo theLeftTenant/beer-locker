@@ -1,2 +1,5 @@
 angular
-	.module('app', []);
+	.module('app', [
+		'ngRoute',
+		'ngCookies'
+		]);
