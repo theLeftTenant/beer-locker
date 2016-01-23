@@ -24,5 +24,5 @@ passport.use(new BasicStrategy(
 	}
 ));
 
+// Force users to submit username and password with each call with session.
 exports.isAuthenticated = passport.authenticate('basic', { session: false });
-// Forces users to submit username and password with each call.

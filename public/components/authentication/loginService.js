@@ -18,7 +18,7 @@
 			$http.post('/api/authenticate', { username: username, password: password })
 				.then(function (response) {
 					callback(response);
-				});
+				});		//	This route is in question...
 		};
 
 		function setCredentials(username, password) {
